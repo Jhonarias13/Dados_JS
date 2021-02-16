@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- style -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        
+        .contenedor {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        
+        .dados {
+            display: flex;
+            margin-bottom: 20px;
+        }
+        
+        .dado-uno,
+        .dado-dos {
+            margin-right: 10px;
+            text-align: center;
+            border: 1px solid black;
+            padding: 5px 10px;
+            font-size: 40px;
+        }
+        
+        #start,
+        #stop {
+            cursor: pointer;
+            padding: 5px;
+            border-radius: 5px;
+            margin-right: 5px;
+        }
+        
+        #stop {
+            padding: 5px 11px;
+        }
+    </style>
+
+    <title>Dados en JS</title>
+</head>
+
+<body>
+
+    <div class="contenedor app">
+        <h1>Dados</h1>
+        <div class="dados">
+            <div class="dado-uno">
+                <p id="dadoUno">-</p>
+            </div>
+            <div class="dado-dos">
+                <p id="dadoDos">-</p>
+            </div>
+        </div>
+        <div class="botones">
+            <button id="start">Lanzar</button>
+            <button id="stop">Stop</button>
+        </div>
+
+    </div>
+    <script>
+        //variables
+        var dadoUno = document.querySelector('#dadoUno')
+        var dadoDos = document.querySelector('#dadoDos')
+
+        // button
+        var botomStart = document.querySelector('#start')
+        var botomStop = document.querySelector('#stop')
+
+
+        //funcciones
+        let numeroRandomUno = () => Math.round(Math.random() * (6 - 1)) + 1
+        let numeroRandomDos = () =>
+            Math.round(Math.random() * (6 - 1)) + 1
+
+        let start = () => azar = setInterval(() => {
+            dadoUno.textContent = numeroRandomUno()
+            dadoDos.textContent = numeroRandomDos()
+
+
+            setTimeout(() => {
+                clearInterval(azar)
+                console.log('no se detiene')
+            }, 725)
+
+        }, 25)
+
+        //eventos del boton
+        botomStart.addEventListener('click', start);
+    </script>
+</body>
+
+</html>
